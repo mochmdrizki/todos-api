@@ -32,6 +32,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    apipie-rails (0.5.10)
+      rails (>= 4.1)
     arel (5.0.1.20140414130214)
     builder (3.2.3)
     case_transform (0.2)
@@ -123,6 +125,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0.rc2)
+  apipie-rails
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails

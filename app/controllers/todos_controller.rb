@@ -1,30 +1,38 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :update, :destroy]
 
-  # GET /todos
+  api :GET, '/todos/', 'Show all todos'
+  formats ['json']
   def index
     @todos = Todo.all
     render json: @todos
   end
 
-  # POST /todos
+  api :GET, '/todos/:id/', 'Show todo detail'
+  param :id, String, desc: "Todo ID"
+  formats ['json']
+  def show
+    render json: @todo
+  end
+
+  api :POST, '/todos/', 'Create todo'
+  formats ['json']
   def create
     @todo = Todo.create!(todo_params)
     render json: @todo
   end
 
-  # GET /todos/:id
-  def show
-    render json: @todo
-  end
-
-  # PUT /todos/:id
+  api :PUT, '/todos/:id/', 'Update todo'
+  param :id, String, desc: "Todo ID"
+  formats ['json']
   def update
     todo = @todo.update(todo_params)
     render json: todo
   end
 
-  # DELETE /todos/:id
+  api :DELETE, '/todos/:id/', 'Delete todo'
+  param :id, String, desc: "Todo ID"
+  formats ['json']
   def destroy
     todo = @todo.destroy
     # head :no_content
